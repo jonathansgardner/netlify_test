@@ -1,0 +1,55 @@
+backend:
+  name: test-repo
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: siteInfo
+    label: Site Info
+    files: 
+      - name: header
+        label: Header
+        file: site/content/header.yml
+        fields:
+          - { name: image, label: Image, widget: file }
+          - name: branding,
+            label: Branding,
+            widget: object,
+            fields: 
+              - { name: logo, label: Logo }
+              - { name: siteTitle, label: Site Title }
+              - { name: subtitle, label: Subtitle }
+  - name: section
+    label: Homepage Section
+    folder: sections
+    create: true
+    fields: 
+      - { name: title, label: Title }
+      - { name: header, label: Header }
+      - { name: content, label: Content, widget: markdown }
+  - name: panel
+    label: Homepage Panel
+    folder: panels
+    create: true
+    fields: 
+      - { name: title, label: Title }
+      - { name: header, label: Header }
+      - { name: content, label: Content, widget: markdown }
+  - name: testimonial
+    label: Testimonial
+    folder: testimonials
+    create: true
+    fields:
+      - { name: recording, label: Recording, widget: file }
+      - { name: author, label: Author }
+      - { name: hometown, label: Hometown }
+      - { name: quote, label: Quote, widget: text }
+  - name: video
+    label: Video
+    folder: posts/videos
+    create: true
+    fields:
+      - { name: title, label: Title }
+      - { name: date, label: Date, widget: date }
+      - { name: video, label: Video, widget: file }
