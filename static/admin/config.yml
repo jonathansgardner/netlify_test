@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: github
+  repo: jonathansgardner/netlify_test
 
 media_folder: static/assets
 public_folder: /assets
@@ -23,14 +24,6 @@ collections:
   - name: section
     label: Homepage Section
     folder: sections
-    create: true
-    fields: 
-      - { name: title, label: Title }
-      - { name: header, label: Header }
-      - { name: content, label: Content, widget: markdown }
-  - name: panel
-    label: Homepage Panel
-    folder: panels
     create: true
     fields: 
       - { name: title, label: Title }
