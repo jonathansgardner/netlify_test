@@ -7,7 +7,7 @@ public_folder: /assets
 
 collections:
   - name: siteInfo
-    label: Site Info
+    label: "Site Info"
     files: 
       - name: header
         label: Header
@@ -19,7 +19,7 @@ collections:
             widget: object,
             fields: 
               - { name: logo, label: Logo }
-              - { name: siteTitle, label: Site Title }
+              - { name: siteTitle, label: "Site Title" }
               - { name: subtitle, label: Subtitle }
   - name: section
     label: Homepage Section
