@@ -27,6 +27,20 @@ collections:
         label: "Homepage"
         file: site/config/homepage.yml
         fields:
+          - name: section
+            label: "Section"
+            widget: list
+            types:
+              - name: pagePreview
+                label: "Page Preview"
+                widget: object
+                fields:
+                  - name: page
+                    label: Page
+                    widget: relation
+                    collection: page
+                    displayFields: [ "header", "content", ]
+                    valueFields: [ "header", "content" ]
           - name: about
             label: "About Me"
             widget: object
@@ -52,16 +66,6 @@ collections:
           - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
           - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
           - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
-        editor:
-          preview: false
-      - name: about
-        label: About
-        file: site/config/about.yml
-        fields:
-          - { name: header, label: Header, widget: string }
-          - { name: snippet, label: Snippet, widget: markdown, required: false }
-          - { name: content, label: Content, widget: markdown }
-          - { name: linkText, label: "Link Text", widget: string }
         editor:
           preview: false
       - name: services
@@ -111,6 +115,14 @@ collections:
           - { name: copyright, label: "Copyright" }
         editor:
           preview: false
+  - name: page
+    label: Page
+    folder: site/content/pages
+    create: true
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: header, label: Header, widget: string }
+      - { name: content, label: Content, widget: markdown }
   - name: testimonial
     label: Testimonial
     folder: site/content/testimonials
