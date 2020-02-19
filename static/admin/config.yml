@@ -19,31 +19,31 @@ collections:
             widget: object
             fields: 
               - { name: logo, label: Logo, widget: image }
-              - { name: siteTitle, label: "Site Title" }
-              - { name: subtitle, label: Subtitle }
+              - { name: siteTitle, label: "Site Title", widget: string }
+              - { name: subtitle, label: Subtitle, widget: string }
       - name: homepageSettings
         label: "Homepage Settings"
         file: site/config/homepage.yml
         fields:
-          - { name: showAbout, label: "Show About Section", widget: boolean }
-          - { name: showServices, label: "Show Services Section", widget: boolean }
-          - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
-          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
-          - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
+          - { name: showAbout, label: "Show About Section", widget: boolean, default: true }
+          - { name: showServices, label: "Show Services Section", widget: boolean, default: true }
+          - { name: showFeatured, label: "Show Featured Content Section", widget: boolean, default: true }
+          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean, default: true }
+          - { name: showContactForm, Label: "Show Contact Form", widget: boolean, default: true }
       - name: about
         label: About
         file: site/config/about.yml
         fields:
-          - { name: header, label: Header, default: "About Me" }
+          - { name: header, label: Header, widget: string, default: "About Me" }
           - { name: snippet, label: Snippet, widget: markdown }
           - { name: content, label: Content, widget: markdown }
-          - { name: linkText, label: "Link Text", default: "read more" }
+          - { name: linkText, label: "Link Text", widget: string, default: "read more" }
       - name: services
         label: Services
         file: site/config/services.yml
         fields:
-          - { name: header, label: Header, default: Services }
-          - { name: content, label: Content, required: false }
+          - { name: header, label: Header, widget: string, default: Services }
+          - { name: description, label: Description, widget: markdown, required: false }
           - name: service
             label: Service
             widget: relation
@@ -54,22 +54,22 @@ collections:
         label: "Featured Content"
         file: site/config/featured.yml
         fields:
-          - { name: header, label: Header, default: "Featured Content" }
+          - { name: header, label: Header, widget: string, default: "Featured Content" }
           - { name: featured, label: "Featured Content", widget: relation }
-          - { name: linkText, label: "Link Text", default: "view all" }
+          - { name: linkText, label: "Link Text", widget: string, default: "view all" }
       - name: testimonials
         label: Testimonials
         file: site/config/testimonials.yml
         fields:
-          - { name: header, label: Header, default: "Testimonials" }
-          - { name: includeAudio, label: "Include Audio", widget: boolean }
+          - { name: header, label: Header, widget: string, default: "Testimonials" }
+          - { name: includeAudio, label: "Include Audio", widget: boolean, default: true }
       - name: contactForm
         label: "Contact Form"
         file: site/config/contact.yml
         fields:
-          - { name: header, label: Header, default: "Get In Touch" }
+          - { name: header, label: Header, widget: string, default: "Get In Touch" }
       - name: footer
-        label: footer
+        label: Footer
         file: site/config/footer.yml
         fields:
           - { name: copyright, label: "Copyright" }
@@ -80,15 +80,15 @@ collections:
     identifier_field: author
     fields:
       - { name: recording, label: Recording, widget: file }
-      - { name: author, label: Author }
-      - { name: hometown, label: Hometown }
+      - { name: author, label: Author, widget: string }
+      - { name: hometown, label: Hometown, widget: string }
       - { name: quote, label: Quote, widget: text }
   - name: video
     label: Video
     folder: site/content/posts/videos
     create: true
     fields:
-      - { name: title, label: Title }
+      - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: date }
       - { name: video, label: Video, widget: file }
   - name: service
@@ -96,7 +96,7 @@ collections:
     folder: site/content/services
     create: true
     fields:
-      - { name: title, label: Title }
+      - { name: title, label: Title, widget: string }
       - { name: image, label: Image, widget: image }
       - { name: thumbnail, label: Thumbnail, widget: image, required: false }
       - { name: description, label: Description, widget: text }
