@@ -33,13 +33,20 @@ collections:
             fields:
               - { name: showAbout, label: "Show About Section", widget: boolean }
               - { name: header, label: Header, widget: string }
-              - { name: snippet, label: Snippet, widget: markdown, required: false }
               - name: content
                 label: Content
                 widget: list
                 types:
-                  - { name: usePageBody, label: "Use Content from Page", widget: boolean }
-                  - { name: content, label: Content, widget: markdown }
+                  - name: usePageBody
+                    label: "Use Content from Page"
+                    widget: object
+                    fields:
+                      - { name: usePageBody, label: "Use Page Body", widget: hidden }
+                  - name: content
+                    label: Content
+                    widget: object
+                    fields:
+                      - { name: content, label: "Content", widget: markdown }
               - { name: linkText, label: "Link Text", widget: string }
           - { name: showServices, label: "Show Services Section", widget: boolean }
           - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
