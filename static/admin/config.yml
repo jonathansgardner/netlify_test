@@ -40,7 +40,7 @@ collections:
                     widget: relation
                     collection: page
                     displayFields: [ "header", "content", ]
-                    valueFields: "title"
+                    valueField: "title"
           - name: about
             label: "About Me"
             widget: object
