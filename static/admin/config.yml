@@ -6,33 +6,97 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
-  - name: siteInfo
-    label: "Site Info"
+  - name: siteOptions
+    label: "Site Options"
     files: 
-      - name: header
-        label: Header
-        file: site/content/header.yml
+      - name: siteHeader
+        label: "Site Header"
+        file: site/config/header.yml
         fields:
-          - { name: image, label: Image, widget: file }
-          - name: branding
-            label: Branding
+          - { name: image, label: Image, widget: image }
+          - name: siteBranding
+            label: "Site Branding"
             widget: object
             fields: 
-              - { name: logo, label: Logo }
+              - { name: logo, label: Logo, widget: image }
               - { name: siteTitle, label: "Site Title" }
               - { name: subtitle, label: Subtitle }
-  - name: section
-    label: Homepage Section
-    folder: sections
+      - name: homepageSettings
+        label: "Homepage Settings"
+        file: site/config/homepage.yml
+        fields:
+          - { name: showAbout, label: "Show About Section", widget: boolean }
+          - { name: showServices, label: "Show Services Section", widget: boolean }
+          - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
+          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
+          - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
+      - name: about
+        label: About
+        file: site/config/about.yml
+        fields:
+          - { name: header, label: Header, default: "About Me" }
+          - { name: snippet, label: Snippet, widget: markdown }
+          - { name: content, label: Content, widget: markdown }
+          - { name: linkText, label: "Link Text", default: "read more" }
+      - name: services
+        label: Services
+        file: site/config/services.yml
+        fields:
+          - { name: header, label: Header, default: Services }
+          - { name: content, label: Content, required: false }
+          - name: service
+            label: Service
+            widget: relation
+            collection: service
+            displayFields: [ "name", "image", "thumbnail", "description" ]
+            multiple: false
+      - name: featuredContent
+        label: "Featured Content"
+        file: site/config/featured.yml
+        fields:
+          - { name: header, label: Header, default: "Featured Content" }
+          - { name: featured, label: "Featured Content", widget: relation }
+          - { name: linkText, label: "Link Text", default: "view all" }
+      - name: testimonials
+        label: Testimonials
+        file: site/config/testimonials.yml
+        fields:
+          - { name: header, label: Header, default: "Testimonials" }
+          - { name: includeAudio, label: "Include Audio", widget: boolean }
+      - name: contactForm
+        label: "Contact Form"
+        file: site/config/contact.yml
+        fields:
+          - { name: header, label: Header, default: "Get In Touch" }
+      - name: footer
+        label: footer
+        file: site/config/footer.yml
+        fields:
+          - { name: copyright, label: "Copyright" }
+  - name: page
+    label: Page
+    folder: site/content/pages
     create: true
-    fields: 
-      - { name: title, label: Title }
-      - { name: header, label: Header }
-      - { name: content, label: Content, widget: markdown }
+    types:
+      - name: text
+        label: Text
+        widget: object
+        fields: 
+          - { name: title, label: Title }
+          - { name: header, label: Header }
+          - { name: content, label: Content, widget: markdown }
+      - name: thumbnail
+        label: Thumbnail
+        widget: object
+        fields: 
+          - { name: title, label: Title }
+          - { name: header, label: Header }
+          - { name: content, label: Content, widget: markdown }
   - name: testimonial
     label: Testimonial
-    folder: testimonials
+    folder: site/content/testimonials
     create: true
+    identifier_field: author
     fields:
       - { name: recording, label: Recording, widget: file }
       - { name: author, label: Author }
@@ -40,9 +104,18 @@ collections:
       - { name: quote, label: Quote, widget: text }
   - name: video
     label: Video
-    folder: posts/videos
+    folder: site/content/posts/videos
     create: true
     fields:
       - { name: title, label: Title }
       - { name: date, label: Date, widget: date }
       - { name: video, label: Video, widget: file }
+  - name: service
+    label: Service
+    folder: site/content/services
+    create: true
+    fields:
+      - { name: title, label: Title }
+      - { name: image, label: Image, widget: Image }
+      - { name: thumbnail, label: Thumbnail, widget: Image required: false }
+      - { name: description, label: Description, widget: text }
