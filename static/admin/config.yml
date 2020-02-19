@@ -73,25 +73,6 @@ collections:
         file: site/config/footer.yml
         fields:
           - { name: copyright, label: "Copyright" }
-  - name: page
-    label: Page
-    folder: site/content/pages
-    create: true
-    types:
-      - name: text
-        label: Text
-        widget: object
-        fields: 
-          - { name: title, label: Title }
-          - { name: header, label: Header }
-          - { name: content, label: Content, widget: markdown }
-      - name: thumbnail
-        label: Thumbnail
-        widget: object
-        fields: 
-          - { name: title, label: Title }
-          - { name: header, label: Header }
-          - { name: content, label: Content, widget: markdown }
   - name: testimonial
     label: Testimonial
     folder: site/content/testimonials
