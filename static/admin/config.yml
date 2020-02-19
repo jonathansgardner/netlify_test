@@ -39,8 +39,9 @@ collections:
                     label: Page
                     widget: relation
                     collection: page
-                    displayFields: [ "header", "content", ]
                     valueField: "title"
+                    searchFields: [ "title" ]
+                    displayFields: [ "header", "content", ]
           - name: about
             label: "About Me"
             widget: object
