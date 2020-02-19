@@ -41,29 +41,22 @@ collections:
                     collection: page
                     valueField: "title"
                     searchFields: [ "title" ]
-                    displayFields: [ "header", "content", ]
+                    displayFields: [ "title" ]
           - name: about
-            label: "About Me"
+            label: "About Preview"
             widget: object
             fields:
-              - { name: showAbout, label: "Show About Section", widget: boolean }
-              - { name: header, label: Header, widget: string }
-              - name: content
-                label: Content
-                widget: list
-                types:
-                  - name: usePageBody
-                    label: "Use Content from Page"
-                    widget: object
-                    fields:
-                      - { name: usePageBody, label: "Use Page Body", widget: hidden }
-                  - name: content
-                    label: Content
-                    widget: object
-                    fields:
-                      - { name: content, label: "Content", widget: markdown }
-              - { name: linkText, label: "Link Text", widget: string }
-          - { name: showServices, label: "Show Services Section", widget: boolean }
+              - { name: hideSection, label: "Hide section", widget: boolean }
+              - { name: header, label: Header, widget: string, required: false, hint: "if left blank, header will default to the About Page's header" }
+              - { name: content, label: "Content", widget: markdown, required: false, hint: "if left blank, content will be set from the About Page's body" }
+              - { name: linkText, label: "Link Text", widget: string, required: true }
+          - name: services
+            label: "Services"
+            widget: object
+            fields:
+              - { name: hideSection, label: "Hide section", widget: boolean }
+              - { name: header, label: Header, widget: string, required: true }
+              - { name: content, label: "Content", widget: markdown, required: false, hint: "if left blank, content will be set from the About Page's body" }
           - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
           - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
           - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
@@ -124,6 +117,12 @@ collections:
       - { name: title, label: Title, widget: string }
       - { name: header, label: Header, widget: string }
       - { name: content, label: Content, widget: markdown }
+  - name: thumbnailStyle
+    label: Thumbnail Style
+    folder: site/content/thumbnailStyle
+    create: false
+    fields:
+      - { name: title, label: Title, widget: string }
   - name: testimonial
     label: Testimonial
     folder: site/content/testimonials
