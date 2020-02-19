@@ -21,6 +21,8 @@ collections:
               - { name: logo, label: Logo, widget: image }
               - { name: siteTitle, label: "Site Title", widget: string }
               - { name: subtitle, label: Subtitle, widget: string }
+            editor:
+              preview: false
       - name: homepageSettings
         label: "Homepage Settings"
         file: site/config/homepage.yml
@@ -30,14 +32,18 @@ collections:
           - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
           - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
           - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
+        editor:
+          preview: false
       - name: about
         label: About
         file: site/config/about.yml
         fields:
           - { name: header, label: Header, widget: string }
-          - { name: snippet, label: Snippet, widget: markdown }
+          - { name: snippet, label: Snippet, widget: markdown, required: false }
           - { name: content, label: Content, widget: markdown }
           - { name: linkText, label: "Link Text", widget: string }
+        editor:
+          preview: false
       - name: services
         label: Services
         file: site/config/services.yml
@@ -50,29 +56,41 @@ collections:
             collection: service
             displayFields: [ "name", "image", "thumbnail", "description" ]
             multiple: false
+        editor:
+          preview: false
       - name: featuredContent
         label: "Featured Content"
         file: site/config/featured.yml
         fields:
           - { name: header, label: Header, widget: string }
-          - { name: featured, label: "Featured Content", widget: relation }
+          - name: featured
+            label: "Featured Content"
+            widget: relation
           - { name: linkText, label: "Link Text", widget: string }
+        editor:
+          preview: false
       - name: testimonials
         label: Testimonials
         file: site/config/testimonials.yml
         fields:
           - { name: header, label: Header, widget: string }
           - { name: includeAudio, label: "Include Audio", widget: boolean }
+        editor:
+          preview: false
       - name: contactForm
         label: "Contact Form"
         file: site/config/contact.yml
         fields:
           - { name: header, label: Header, widget: string }
+        editor:
+          preview: false
       - name: footer
         label: Footer
         file: site/config/footer.yml
         fields:
           - { name: copyright, label: "Copyright" }
+        editor:
+          preview: false
   - name: testimonial
     label: Testimonial
     folder: site/content/testimonials
