@@ -25,24 +25,24 @@ collections:
         label: "Homepage Settings"
         file: site/config/homepage.yml
         fields:
-          - { name: showAbout, label: "Show About Section", widget: boolean, default: true }
-          - { name: showServices, label: "Show Services Section", widget: boolean, default: true }
-          - { name: showFeatured, label: "Show Featured Content Section", widget: boolean, default: true }
-          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean, default: true }
-          - { name: showContactForm, Label: "Show Contact Form", widget: boolean, default: true }
+          - { name: showAbout, label: "Show About Section", widget: boolean }
+          - { name: showServices, label: "Show Services Section", widget: boolean }
+          - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
+          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
+          - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
       - name: about
         label: About
         file: site/config/about.yml
         fields:
-          - { name: header, label: Header, widget: string, default: "About Me" }
+          - { name: header, label: Header, widget: string }
           - { name: snippet, label: Snippet, widget: markdown }
           - { name: content, label: Content, widget: markdown }
-          - { name: linkText, label: "Link Text", widget: string, default: "read more" }
+          - { name: linkText, label: "Link Text", widget: string }
       - name: services
         label: Services
         file: site/config/services.yml
         fields:
-          - { name: header, label: Header, widget: string, default: Services }
+          - { name: header, label: Header, widget: string }
           - { name: description, label: Description, widget: markdown, required: false }
           - name: service
             label: Service
@@ -54,20 +54,20 @@ collections:
         label: "Featured Content"
         file: site/config/featured.yml
         fields:
-          - { name: header, label: Header, widget: string, default: "Featured Content" }
+          - { name: header, label: Header, widget: string }
           - { name: featured, label: "Featured Content", widget: relation }
-          - { name: linkText, label: "Link Text", widget: string, default: "view all" }
+          - { name: linkText, label: "Link Text", widget: string }
       - name: testimonials
         label: Testimonials
         file: site/config/testimonials.yml
         fields:
-          - { name: header, label: Header, widget: string, default: "Testimonials" }
-          - { name: includeAudio, label: "Include Audio", widget: boolean, default: true }
+          - { name: header, label: Header, widget: string }
+          - { name: includeAudio, label: "Include Audio", widget: boolean }
       - name: contactForm
         label: "Contact Form"
         file: site/config/contact.yml
         fields:
-          - { name: header, label: Header, widget: string, default: "Get In Touch" }
+          - { name: header, label: Header, widget: string }
       - name: footer
         label: Footer
         file: site/config/footer.yml
