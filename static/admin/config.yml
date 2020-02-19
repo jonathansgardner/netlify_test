@@ -14,9 +14,9 @@ collections:
         file: site/content/header.yml
         fields:
           - { name: image, label: Image, widget: file }
-          - name: branding,
-            label: Branding,
-            widget: object,
+          - name: branding
+            label: Branding
+            widget: object
             fields: 
               - { name: logo, label: Logo }
               - { name: siteTitle, label: "Site Title" }
