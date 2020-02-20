@@ -12,13 +12,13 @@ collections:
       - name: siteHeader
         label: "Site Header"
         file: site/config/header.yml
+        editor:
+          preview: false
         fields:
           - { name: image, label: Image, widget: image }
           - name: siteBranding
             label: "Site Branding"
             widget: object
-            editor:
-              preview: false
             fields: 
               - { name: logo, label: Logo, widget: image }
               - { name: siteTitle, label: "Site Title", widget: string }
@@ -30,78 +30,80 @@ collections:
         editor:
           preview: false
         fields:
-          - name: sections
-            label: Sections
+          - name: about
+            label: "About Page Preview"
             widget: object
             fields:
-              - name: about
-                label: "About Page Preview"
-                widget: object
-                fields:
-                  - { name: hideSection, label: "Hide section", widget: boolean }
-                  - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the About Page's heading if left blank" }
-                  - { name: content, label: "Content", widget: markdown, required: false, hint: "Defaults to the About Page's snippet if left blank" }
-                  - { name: linkText, label: "Link Text", widget: string, required: true }
+              - { name: hideSection, label: "Hide section", widget: boolean }
+              - { name: heading, label: Heading, widget: string, required: false, hint: "Leave blank to use the About Page's heading" }
+              - { name: content, label: "Content", widget: markdown, required: false, hint: "Leave blank to use the About Page's snippet" }
+              - { name: linkText, label: "Link Text", widget: string, required: true }
 
-              - name: services
-                label: Services
-                widget: object
-                fields:
-                  - { name: hideSection, label: "Hide section", widget: boolean }
-                  - { name: heading, label: Heading, widget: string, required: true }
-                  - { name: content, label: "Content", widget: markdown, required: false }
-
-              - name: featured
-                label: "featured Content"
-                widget: object
-                fields:
-                  - { name: hideSection, label: "Hide section", widget: boolean }
-                  - { name: heading, label: Heading, widget: string, required: true }
-                  - { name: linkText, label: "Link Text", widget: string, required: true }
-
+          - name: services
+            label: Services
+            widget: object
+            fields:
+              - { name: hideSection, label: "Hide section", widget: boolean }
+              - { name: heading, label: Heading, widget: string, required: true }
+              - { name: content, label: "Content", widget: markdown, required: false }
               - name: customSections
                 label: "Custom Homepage Sections"
                 label_singular: "Custom Homepage Section"
                 widget: list
-                types:
-                  - name: pagePreview
-                    label: "Page Preview"
-                    widget: object
+                field: { name: services, label: Services, label_singular: Service, widget: relation, collection: services, valueField: "title", displayFields: ["title"], searchFields: ["title"] }
+
+          - name: featured
+            label: "featured Content"
+            widget: object
+            fields:
+              - { name: hideSection, label: "Hide section", widget: boolean }
+              - { name: heading, label: Heading, widget: string, required: true }
+              - { name: linkText, label: "Link Text", widget: string, required: true }
+
+          - name: customSections
+            label: "Custom Sections"
+            label_singular: "Custom Section"
+            widget: list
+            typeKey: 'Custom Section'
+            types:
+              - name: pagePreview
+                label: "Page Preview"
+                widget: object
+                fields:
+                  - name: page
+                    label: Page
+                    widget: relation
+                    collection: pages
+                    valueField: "title"
+                    searchFields: [ "title" ]
+                    displayFields: [ "title" ]
+                  - { name: heading, label: Heading, widget: string, required: false, hint: "Leave blank to use the Page's heading" }
+                  - { name: content, label: "Content", widget: markdown, required: false, hint: "Leave blank to use the Page's snippet" }
+                  - { name: linkText, label: "Link Text", widget: string, required: true }
+                  
+              - name: pageThumbnails
+                label: "Page Thumbnails"
+                widget: object
+                fields:
+                  - { name: heading, label: Heading, widget: string, required: true }
+                  - { name: content, label: "Content", widget: markdown, required: false }
+                  - name: thumbnails
+                    label: Thumbnails
+                    label_singular: Thumbnail
+                    widget: list
                     fields:
-                      - name: page
-                        label: Page
+                      - name: pageLink
+                        label: "Page To Link"
                         widget: relation
                         collection: pages
                         valueField: "title"
                         searchFields: [ "title" ]
                         displayFields: [ "title" ]
+                      - { name: image, label: Image, widget: image, required: true }
                       - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if left bank" }
-                      - { name: content, label: "Content", widget: markdown, required: false, hint: "Defaults to the Page's snippet if left blank" }
-                      - { name: linkText, label: "Link Text", widget: string, required: true }
-                      
-                  - name: pageThumbnails
-                    label: "Page Thumbnails"
-                    widget: object
-                    fields:
-                      - { name: heading, label: Heading, widget: string, required: true }
-                      - { name: content, label: "Content", widget: markdown, required: false }
-                      - name: thumbnails
-                        label: Thumbnails
-                        label_singular: Thumbnail
-                        widget: list
-                        fields:
-                          - name: pageLink
-                            label: "Page To Link"
-                            widget: relation
-                            collection: pages
-                            valueField: "title"
-                            searchFields: [ "title" ]
-                            displayFields: [ "title" ]
-                          - { name: image, label: Image, widget: image, required: true }
-                          - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if left bank" }
-                        
-              - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
-              - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
+                    
+          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
+          - { name: showContactForm, label: "Show Contact Form", widget: boolean }
 
       - name: footer
         label: Footer
