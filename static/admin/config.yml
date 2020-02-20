@@ -38,26 +38,55 @@ collections:
                   - name: page
                     label: Page
                     widget: relation
-                    collection: page
+                    collection: pages
                     valueField: "title"
                     searchFields: [ "title" ]
                     displayFields: [ "title" ]
+                  - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if left bank" }
+                  - { name: content, label: "Content", widget: markdown, required: false, hint: "Defaults to the Page's snippet if left blank" }
+                  - { name: linkText, label: "Link Text", widget: string, required: true }
+              - name: thumbnails
+                label: "Thumbnails"
+                widget: object
+                fields:
+                  - { name: heading, label: Heading, widget: string, required: true }
+                  - { name: content, label: "Content", widget: markdown, required: false }
+                  - name: pages
+                    label: Pages
+                    label_singular: Page
+                    widget: list
+                    fields:
+                      - name: page
+                        label: Page
+                        widget: relation
+                        collection: pages
+                        valueField: "title"
+                        searchFields: [ "title" ]
+                        displayFields: [ "title" ]
+                      - { name: thumbnail, label: Thumbnail, widget: image, required: true }
+                      - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if left bank" }
           - name: about
-            label: "About Preview"
+            label: "About Page Preview"
             widget: object
             fields:
               - { name: hideSection, label: "Hide section", widget: boolean }
-              - { name: header, label: Header, widget: string, required: false, hint: "if left blank, header will default to the About Page's header" }
-              - { name: content, label: "Content", widget: markdown, required: false, hint: "if left blank, content will be set from the About Page's body" }
+              - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the About Page's heading if left blank" }
+              - { name: content, label: "Content", widget: markdown, required: false, hint: "Defaults to the About Page's snippet if left blank" }
               - { name: linkText, label: "Link Text", widget: string, required: true }
           - name: services
             label: Services
             widget: object
             fields:
               - { name: hideSection, label: "Hide section", widget: boolean }
-              - { name: header, label: Header, widget: string, required: true }
-              - { name: content, label: "Content", widget: markdown, required: false, hint: "if left blank, content will be set from the About Page's body" }
-          - { name: showFeatured, label: "Show Featured Content Section", widget: boolean }
+              - { name: heading, label: Heading, widget: string, required: true }
+              - { name: content, label: "Content", widget: markdown, required: false }
+          - name: featured
+            label: "featured Content"
+            widget: object
+            fields:
+              - { name: hideSection, label: "Hide section", widget: boolean }
+              - { name: heading, label: Heading, widget: string, required: true }
+              - { name: linkText, label: "Link Text", widget: string, required: true }
           - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
           - { name: showContactForm, Label: "Show Contact Form", widget: boolean }
         editor:
