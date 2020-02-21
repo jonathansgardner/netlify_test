@@ -20,9 +20,9 @@ collections:
             label: "Site Branding"
             widget: object
             fields: 
-              - { name: logo, label: Logo, widget: image }
+              - { name: logo, label: Logo, widget: image, required: false }
               - { name: siteTitle, label: "Site Title", widget: string }
-              - { name: subtitle, label: Subtitle, widget: string }
+              - { name: slogan, label: Slogan, widget: string, required: false }
 
       - name: homepage
         label: "Homepage"
@@ -36,7 +36,13 @@ collections:
             fields:
               - { name: hideSection, label: "Hide section", widget: boolean }
               - { name: heading, label: Heading, widget: string, required: false, hint: "Leave blank to use the About Page's heading" }
-              - { name: content, label: "Content", widget: markdown, required: false, hint: "Leave blank to use the About Page's snippet" }
+              - { name: showFeaturedImage, label: "Show Featured Image", widget: boolean }
+              - name: content
+                label: "Content"
+                widget: markdown
+                buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
+                required: false
+                hint: "Leave blank to use the About Page's snippet" }
               - { name: linkText, label: "Link Text", widget: string, required: true }
 
           - name: services
@@ -45,7 +51,11 @@ collections:
             fields:
               - { name: hideSection, label: "Hide section", widget: boolean }
               - { name: heading, label: Heading, widget: string, required: true }
-              - { name: content, label: "Content", widget: markdown, required: false }
+              - name: content
+                label: "Content"
+                widget: markdown
+                buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
+                required: false
               - name: services
                 label: "Services"
                 label_singular: "Service"
@@ -78,7 +88,12 @@ collections:
                     searchFields: [ "title" ]
                     displayFields: [ "title" ]
                   - { name: heading, label: Heading, widget: string, required: false, hint: "Leave blank to use the Page's heading" }
-                  - { name: content, label: "Content", widget: markdown, required: false, hint: "Leave blank to use the Page's snippet" }
+                  - name: content
+                    label: "Content"
+                    widget: markdown
+                    buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
+                    required: false
+                    hint: "Leave blank to use the Page's snippet" }
                   - { name: linkText, label: "Link Text", widget: string, required: true }
                   
               - name: pageThumbnails
@@ -86,7 +101,11 @@ collections:
                 widget: object
                 fields:
                   - { name: heading, label: Heading, widget: string, required: true }
-                  - { name: content, label: "Content", widget: markdown, required: false }
+                  - name: content
+                    label: "Content"
+                    widget: markdown
+                    buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
+                    required: false
                   - name: thumbnails
                     label: Thumbnails
                     label_singular: Thumbnail
@@ -102,8 +121,81 @@ collections:
                       - { name: image, label: Image, widget: image, required: true }
                       - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if left bank" }
                     
-          - { name: showTestimonials, label: "Show Testimonials Section", widget: boolean }
+          - { name: showTestimonials, label: "Show Testimonials", widget: boolean }
           - { name: showContactForm, label: "Show Contact Form", widget: boolean }
+
+      - name: panels
+        label: Panels
+        file: site/config/panels.yml
+        editor:
+          preview: false
+        fields:
+          - name: testimonials
+            label: Testimonials
+            widget: object
+            fields:
+              - { name: includeAudio, label: "Include Audio", widget: boolean }
+
+          - name: contactForm
+            label: "Contact Form"
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to \"Contact\"" }
+
+              - name: formFields
+                label: Form Fields
+                widget: list
+                types:
+                  - name: textInput
+                    label: Text
+                    widget: object
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+                  - name: emailInput
+                    label: Email
+                    widget: object
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+                  - name: phoneInput
+                    label: Phone
+                    widget: object
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+                  - name: websiteInput
+                    label: Website
+                    widget: object
+                    fields:=7
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+                  - name: checkbox
+                    label: Checkbox
+                    widget: object
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+                  - name: dropdown
+                    label: Dropdown
+                    widget: object
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+                      - name: options
+                        label: Options
+                        widget: list
+                        fields:
+                          - { name: option, label: Option, widget: string }
+                          - { name: label, label: Label, widget: string }
+                  - name: paragraph
+                    label: Paragraph
+                    widget: object
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: label, label: Label, widget: string }
+
+              - { name: buttonText, label: "Button Text", widget: string, required: false, hint: "Defaults to \"Submit\"" }
 
       - name: footer
         label: Footer
@@ -121,7 +213,9 @@ collections:
     fields:
       - { name: title, label: Title, widget: string }
       - { name: header, label: Header, widget: string }
+      - { name: featuredImage, label: "Featured Image", widget: image, required: false }
       - { name: content, label: Content, widget: markdown }
+      - { name: snippet, label: Snippet, widget: markdown, buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"] }
 
   - name: testimonials
     label: Testimonials
@@ -130,13 +224,14 @@ collections:
     create: true
     identifier_field: author
     fields:
-      - { name: recording, label: Recording, widget: file }
+      - { name: title, label: Title, widget: string }
+      - { name: recording, label: Recording, widget: file, required: false }
+      - { name: quote, label: Quote, widget: text }
       - { name: author, label: Author, widget: string }
       - { name: hometown, label: Hometown, widget: string }
-      - { name: quote, label: Quote, widget: text }
 
   - name: videos
-    label: videos
+    label: Videos
     label_singular: Video
     folder: site/content/posts/videos
     create: true
