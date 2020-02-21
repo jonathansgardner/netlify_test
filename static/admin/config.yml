@@ -93,7 +93,7 @@ collections:
                     widget: markdown
                     buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
                     required: false
-                    hint: "Leave blank to use the Page's snippet" }
+                    hint: "Leave blank to use the Page's snippet"
                   - { name: linkText, label: "Link Text", widget: string, required: true }
                   
               - name: pageThumbnails
