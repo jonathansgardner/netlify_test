@@ -124,18 +124,18 @@ collections:
                       - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if no value is entered." }
 
               - name: featuredContent
-                  label: "Featured Content"
-                  widget: object
-                  fields:
-                    - name: page
-                      label: Page
-                      widget: relation
-                      collection: pages
-                      valueField: "title"
-                      searchFields: [ "title" ]
-                      displayFields: [ "title" ]
-                    - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if no value is entered." }
-                    - { name: linkText, label: "Link Text", widget: string, required: true }
+                label: "Featured Content"
+                widget: object
+                fields:
+                  - name: page
+                    label: Page
+                    widget: relation
+                    collection: pages
+                    valueField: "title"
+                    searchFields: [ "title" ]
+                    displayFields: [ "title" ]
+                  - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if no value is entered." }
+                  - { name: linkText, label: "Link Text", widget: string, required: true }
                     
           - { name: showTestimonials, label: "Show Testimonials", widget: boolean }
           - { name: showContactForm, label: "Show Contact Form", widget: boolean }
