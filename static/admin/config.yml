@@ -22,7 +22,7 @@ collections:
               - { name: logo, label: Logo, widget: image, required: false }
               - { name: siteTitle, label: "Site Title", widget: string }
               - { name: slogan, label: Slogan, widget: string, required: false }
-              - { name: icon, label: Icon, widget: image, required: false } # will need validation
+              - { name: icon, label: Icon, widget: image, required: false }
               - { name: copyright, label: "Copyright", required: false }
 
       - name: homepage
