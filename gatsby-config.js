@@ -9,8 +9,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/static/img`,
+        name: `assets`,
+        path: `${__dirname}/static/assets`,
       },
     },
     {
@@ -30,8 +30,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/assets`,
-        name: 'assets',
+        path: `${__dirname}/src/images`,
+        name: 'images',
       },
     },
     `gatsby-plugin-sharp`,
