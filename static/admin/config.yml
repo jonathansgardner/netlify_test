@@ -11,7 +11,7 @@ collections:
     files: 
       - name: siteIdentity
         label: "Site Identity"
-        file: site/config/identity.yml
+        file: src/settings/identity.yml
         editor:
           preview: false
         fields:
@@ -27,51 +27,10 @@ collections:
 
       - name: homepage
         label: "Homepage"
-        file: site/config/homepage.yml
+        file: src/settings/homepage.yml
         editor:
           preview: false
         fields:
-          # - { name: headerImage, label: "Header Image", widget: image }
-          # - name: about
-          #   label: "About Page Preview"
-          #   widget: object
-          #   fields:
-          #     - { name: hideSection, label: "Hide section", widget: boolean }
-          #     - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the About Page's heading if no value is entered." }
-          #     - { name: showFeaturedImage, label: "Show Featured Image", widget: boolean }
-          #     - name: content
-          #       label: "Content"
-          #       widget: markdown
-          #       buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
-          #       required: false
-          #       hint: "Defaults to the About Page's snippet if no value is entered."
-          #     - { name: linkText, label: "Link Text", widget: string, required: true }
-
-          # - name: services
-          #   label: Services
-          #   widget: object
-          #   fields:
-          #     - { name: hideSection, label: "Hide section", widget: boolean }
-          #     - { name: heading, label: Heading, widget: string, required: true }
-          #     - name: content
-          #       label: "Content"
-          #       widget: markdown
-          #       buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
-          #       required: false
-          #     - name: services
-          #       label: "Services"
-          #       label_singular: "Service"
-          #       widget: list
-          #       field: { name: services, label: Services, label_singular: Service, widget: relation, collection: services, valueField: "title", displayFields: ["title"], searchFields: ["title"] }
-
-          # - name: featured
-          #   label: "featured Content"
-          #   widget: object
-          #   fields:
-          #     - { name: hideSection, label: "Hide section", widget: boolean }
-          #     - { name: heading, label: Heading, widget: string, required: true }
-          #     - { name: linkText, label: "Link Text", widget: string, required: true }
-
           - name: sections
             label: "Sections"
             label_singular: "Section"
@@ -127,22 +86,60 @@ collections:
                 label: "Featured Content"
                 widget: object
                 fields:
-                  - name: page
-                    label: Page
-                    widget: relation
-                    collection: pages
-                    valueField: "title"
-                    searchFields: [ "title" ]
-                    displayFields: [ "title" ]
-                  - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if no value is entered." }
-                  - { name: linkText, label: "Link Text", widget: string, required: true }
+                  - { name: heading, label: Heading, widget: string }
+                  - name: content
+                    label: Content
+                    widget: list
+                    types:
+                      - name: article
+                        label: Article
+                        widget: relation
+                        collection: articles
+                        valueField: "title"
+                        searchFields: [ "title" ]
+                        displayFields: [ "title" ]
+                      - name: video
+                        label: Video
+                        widget: relation
+                        collection: videos
+                        valueField: "title"
+                        searchFields: [ "title" ]
+                        displayFields: [ "title" ]
+                  - name: layout
+                    label: Layout
+                    widget: select
+                    options:
+                      - { label: List, value: list }
+                      - { label: Grid, value: grid }
+                  - { name: linkText, label: "Link Text", widget: string }
+
+              - name: recentContent
+                label: "Recent Content"
+                widget: object
+                fields:
+                  - { name: heading, label: Heading, widget: string }
+                  - name: contentType
+                    label: "Content Type"
+                    widget: select
+                    default: video
+                    options:
+                      - { label: Articles, value: articles }
+                      - { label: Videos, value: videos }
+                  - { name: quantity, label: Quantity, widget: number }
+                  - name: layout
+                    label: Layout
+                    widget: select
+                    options:
+                      - { label: List, value: list }
+                      - { label: Grid, value: grid }
+                  - { name: linkText, label: "Link Text", widget: string }
                     
           - { name: showTestimonials, label: "Show Testimonials", widget: boolean }
           - { name: showContactForm, label: "Show Contact Form", widget: boolean }
 
       - name: panels
         label: Panels
-        file: site/config/panels.yml
+        file: src/settings/panels.yml
         editor:
           preview: false
         fields:
@@ -215,11 +212,11 @@ collections:
   - name: pages
     label: Pages
     label_singular: Page
-    folder: site/content/pages
+    folder: src/content/pages
     create: true
     fields:
       - { name: title, label: Title, widget: string }
-      - { name: header, label: Header, widget: string }
+      - { name: heading, label: Heading, widget: string }
       - { name: featuredImage, label: "Featured Image", widget: image, required: false }
       - { name: content, label: Content, widget: markdown }
       - name: snippet
@@ -231,7 +228,7 @@ collections:
   - name: testimonials
     label: Testimonials
     label_singular: Testimonial
-    folder: site/content/testimonials
+    folder: src/content/testimonials
     create: true
     identifier_field: author
     fields:
@@ -241,10 +238,26 @@ collections:
       - { name: author, label: Author, widget: string }
       - { name: hometown, label: Hometown, widget: string }
 
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: src/content/posts/articles
+    create: true
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: heading, label: Heading, widget: string }
+      - { name: featuredImage, label: "Featured Image", widget: image, required: false }
+      - { name: content, label: Content, widget: markdown }
+      - name: snippet
+        label: Snippet
+        widget: markdown
+        buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
+        hint: "A preview or brief overview of this article's content. Used when the article is included in a recent or featured content section of another page"
+
   - name: videos
     label: Videos
     label_singular: Video
-    folder: site/content/posts/videos
+    folder: src/content/posts/videos
     create: true
     fields:
       - { name: title, label: Title, widget: string }
