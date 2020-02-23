@@ -1,5 +1,5 @@
 ---
-title: about
+title: About
 heading: About Me
 content: >-
   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis fugit
