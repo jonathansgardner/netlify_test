@@ -1,0 +1,18 @@
+testimonials:
+  heading: What My Clients Think
+  includeAudio: false
+contactForm:
+  formFields:
+    - label: Name
+      title: Name
+      type: textInput
+    - label: Email
+      title: Email
+      type: emailInput
+    - label: Phone
+      title: Phone
+      type: phoneInput
+    - label: Messsage
+      title: Message
+      type: paragraph
+  heading: Get In Touch
