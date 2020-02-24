@@ -9,8 +9,8 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import Header from '../Header';
-import './Layout.css'
+import Header from '../Header/index';
+import './Layout.css';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(
@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
 				copyright={ data.file.childMarkdownRemark.frontmatter.siteIdentity.copyright }
 			/>
       <main id="site-content">
-				{children}
+				{ children }
 			</main>
     </div>
   );
