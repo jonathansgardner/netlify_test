@@ -11,7 +11,7 @@ collections:
     files: 
       - name: siteIdentity
         label: "Site Identity"
-        file: src/settings/identity.yml
+        file: src/settings/identity.md
         editor:
           preview: false
         fields:
@@ -27,7 +27,7 @@ collections:
 
       - name: homepage
         label: "Homepage"
-        file: src/settings/homepage.yml
+        file: src/settings/homepage.md
         editor:
           preview: false
         fields:
@@ -139,7 +139,7 @@ collections:
 
       - name: panels
         label: Panels
-        file: src/settings/panels.yml
+        file: src/settings/panels.md
         editor:
           preview: false
         fields:
