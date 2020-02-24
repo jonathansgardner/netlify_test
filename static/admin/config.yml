@@ -14,16 +14,12 @@ collections:
         file: src/settings/identity.md
         editor:
           preview: false
-        fields:
-          - name: siteIdentity
-            label: "Site Identity"
-            widget: object
-            fields: 
-              - { name: logo, label: Logo, widget: image, required: false }
-              - { name: siteTitle, label: "Site Title", widget: string }
-              - { name: slogan, label: Slogan, widget: string, required: false }
-              - { name: icon, label: Icon, widget: image, required: false }
-              - { name: copyright, label: "Copyright", required: false }
+        fields: 
+          - { name: logo, label: Logo, widget: image, required: false }
+          - { name: siteTitle, label: "Site Title", widget: string }
+          - { name: slogan, label: Slogan, widget: string, required: false }
+          - { name: icon, label: Icon, widget: image, required: false }
+          - { name: copyright, label: "Copyright", required: false }
 
       - name: homepage
         label: "Homepage"
@@ -35,7 +31,7 @@ collections:
             label: "Sections"
             label_singular: "Section"
             widget: list
-            typeKey: "Section"
+            typeKey: "type"
             types:
               - name: pagePreview
                 label: "Page Preview"
