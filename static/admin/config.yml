@@ -16,6 +16,7 @@ collections:
           preview: false
         fields: 
           - { name: logo, label: Logo, widget: image, required: false }
+          - { name: headerImage, label: HeaderImage, widget: image, required: false }
           - { name: siteTitle, label: "Site Title", widget: string }
           - { name: slogan, label: Slogan, widget: string, required: false }
           - { name: icon, label: Icon, widget: image, required: false }

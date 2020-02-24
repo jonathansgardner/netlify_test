@@ -13,17 +13,15 @@ import Header from './Header';
 import './Layout.css';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(
+  const { file: { childMarkdownRemark: { frontmatter: data } } } = useStaticQuery(
 		graphql`
 			query MyQuery {
 				file(sourceInstanceName: {eq: "settings"}, name: {eq: "identity"}) {
 					childMarkdownRemark {
 						frontmatter {
-							siteIdentity {
-								copyright
-								siteTitle
-								slogan
-							}
+							copyright
+							siteTitle
+							slogan
 						}
 					}
 				}
@@ -34,9 +32,9 @@ const Layout = ({ children }) => {
   return (
     <div id="site-wrapper">
       <Header
-				siteTitle={ data.file.childMarkdownRemark.frontmatter.siteIdentity.siteTitle }
-				slogan={ data.file.childMarkdownRemark.frontmatter.siteIdentity.slogan }
-				copyright={ data.file.childMarkdownRemark.frontmatter.siteIdentity.copyright }
+				siteTitle={ data.siteTitle }
+				slogan={ data.slogan }
+				copyright={ data.copyright }
 			/>
       <main id="site-content">
 				{ children }
