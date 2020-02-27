@@ -6,22 +6,24 @@ import './Header.css';
 
 const Header = ({ siteTitle, slogan, copyright }) => {
 
-	// const data = useStaticQuery(graphql`
-  //   query {
-  //     placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 300) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+	const { placeholderImage: { childMarkdownRemark: { frontmatter: data } } } = useStaticQuery(
+		graphql`
+			query {
+				placeholderImage: file( sourceInstanceName: {eq: "settings"}, name: {eq: "identity"} ) {
+					childMarkdownRemark {
+						frontmatter {
+							headerImage
+						}
+					}
+				}
+			}
+		`
+	);
 	
 	return (
 		<header
 			id="site-header"
-			style={{ background: `url("https://images.unsplash.com/photo-1512588966017-9add7f6bee7c") center/cover no-repeat` }}
+			style={{ background: `url(${ data.headerImage }) center/cover no-repeat` }}
 		>
 			<header>
 				<nav></nav>

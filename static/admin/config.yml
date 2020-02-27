@@ -46,12 +46,12 @@ collections:
                     searchFields: [ "title" ]
                     displayFields: [ "title" ]
                   - { name: heading, label: Heading, widget: string, required: false, hint: "Defaults to the Page's heading if no value is entered." }
-                  - name: content
+                  - name: body
                     label: "Content"
                     widget: markdown
                     buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
                     required: false
-                    hint: "Defaults to the Page's snippet if no value is entered."
+                    hint: "Defaults to an excerpt of the Page's content if no value is entered."
                   - { name: linkText, label: "Link Text", widget: string, required: true }
 
               - name: pageThumbnails
@@ -59,7 +59,7 @@ collections:
                 widget: object
                 fields:
                   - { name: heading, label: Heading, widget: string, required: true }
-                  - name: content
+                  - name: body
                     label: "Content"
                     widget: markdown
                     buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
@@ -215,12 +215,7 @@ collections:
       - { name: title, label: Title, widget: string }
       - { name: heading, label: Heading, widget: string }
       - { name: featuredImage, label: "Featured Image", widget: image, required: false }
-      - { name: content, label: Content, widget: markdown }
-      - name: snippet
-        label: Snippet
-        widget: markdown
-        buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
-        hint: "A preview or brief overview of this page's content. Used when a Page Preview section of this page is added to another page"
+      - { name: body, label: Body, widget: markdown }
 
   - name: testimonials
     label: Testimonials
@@ -244,12 +239,7 @@ collections:
       - { name: title, label: Title, widget: string }
       - { name: heading, label: Heading, widget: string }
       - { name: featuredImage, label: "Featured Image", widget: image, required: false }
-      - { name: content, label: Content, widget: markdown }
-      - name: snippet
-        label: Snippet
-        widget: markdown
-        buttons: ["bold", "italic", "code", "link", "quote", "code-block", "bulleted-list", "numbered-list"]
-        hint: "A preview or brief overview of this article's content. Used when the article is included in a recent or featured content section of another page"
+      - { name: body, label: Content, widget: markdown }
 
   - name: videos
     label: Videos
