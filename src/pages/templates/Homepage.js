@@ -7,25 +7,25 @@ import PagePreview from '../../components/PagePreview';
 
 const Homepage = ({ pageContext }) => {
 
-	const mapSections = () => {
-		return pageContext.sections.map( ( section, index ) => {
-			switch ( section.type ) {
-				case 'pagePreview':
-					const page = pageContext.pageData.find( page => page.title === section.page );
-					return <PagePreview section={ section } page={ page } key={ index.toString() } />;
-				case 'pageThumbnails':
-					return null; 
-				default:
-					return null;
-			}
-		});
-	};
+	// const mapSections = () => {
+	// 	return pageContext.sections.map( ( section, index ) => {
+	// 		switch ( section.type ) {
+	// 			case 'pagePreview':
+	// 				const page = pageContext.pageData.find( page => page.title === section.page );
+	// 				return <PagePreview section={ section } page={ page } key={ index.toString() } />;
+	// 			case 'pageThumbnails':
+	// 				return null; 
+	// 			default:
+	// 				return null;
+	// 		}
+	// 	});
+	// };
 	
 	return (
 		<Layout>
     <SEO title="Home" />
 		{ console.log( pageContext )}
-		{ mapSections() }
+		{/* mapSections() */}
   </Layout>
 	);
 };
