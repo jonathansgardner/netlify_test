@@ -20,8 +20,6 @@ exports.createPages = ({ actions, graphql }) => {
 							frontmatter {
 								title
 								heading
-								content
-								snippet
 							}
 						}
 						name
@@ -34,7 +32,6 @@ exports.createPages = ({ actions, graphql }) => {
 						sections {
 							type
 							heading
-							content
 							page
 							thumbnails {
 								image
@@ -57,7 +54,6 @@ exports.createPages = ({ actions, graphql }) => {
 		const { sections, showTestimonials, showContactForm } = result.data.file.childMarkdownRemark.frontmatter;
 		let pageData = [];
 		for ( section of sections ) {
-			console.log( section)
 			if ( section.type === 'pagePreview' ) {
 				const page = result.data.allFile.edges.find( edge => section.page === edge.node.childMarkdownRemark.frontmatter.title );
 				pageData.push( page.node.childMarkdownRemark.frontmatter );
