@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 
 import Header from './Header';
 import './Layout.css';
+import './PageSections.css';
 
 const Layout = ({ children }) => {
   const { file: { childMarkdownRemark: { frontmatter: data } } } = useStaticQuery(
