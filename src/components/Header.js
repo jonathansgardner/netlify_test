@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './Header.css';
 
-const Header = ({ siteTitle, slogan, copyright }) => {
+const Header = ({ logo, siteTitle, slogan, copyright }) => {
 
 	const { placeholderImage: { childMarkdownRemark: { frontmatter: data } } } = useStaticQuery(
 		graphql`
@@ -29,12 +29,12 @@ const Header = ({ siteTitle, slogan, copyright }) => {
 				<nav></nav>
 			</header>
 			<div id="site-branding">
-				<h1>
+				<h1 id="site-title">
 					<Link to="/">
 						{ siteTitle }
 					</Link>
 				</h1>
-				<h4>{ slogan }</h4>
+				<h4 id="slogan">{ slogan }</h4>
 			</div>
 			<footer>
 				<small>{ copyright }</small>

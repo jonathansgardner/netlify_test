@@ -11,14 +11,18 @@ const path = require('path');
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
+    type MarkdownRemark {
+      frontmatter: MarkdownRemarkFrontmatter
     }
-    type Frontmatter {
-      contactForm: MarkdownRemarkFrontmatterContactForm
+    type MarkdownRemarkFrontmatter {
+			contactForm: MarkdownRemarkFrontmatterContactForm
+			logo: String
+			siteTitle: String
+			slogan: String
+			copyright: String
 		}
 		type MarkdownRemarkFrontmatterContactForm {
-			buttonText: String!
+			buttonText: String
 		}
   `
   createTypes( typeDefs );

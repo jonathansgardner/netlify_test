@@ -1,24 +1,19 @@
-section:last-of-type .section-wrapper {
-	border-bottom: none;
-}
-
 .section-wrapper {
 	max-width: 900px;
 	padding: 32px 0;
 	margin: 0 6.5%;
 	border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
 }
+section:last-of-type .section-wrapper {
+	border-bottom: none;
+}
+
 .panel-wrapper {
 	padding: 64px 0;
 }
 
 header.section-header h2 {
 	margin: 1rem 0 2rem;
-	color: hsl(0, 0%, 13%);
-	font-family: 'Saira Condensed', sans-serif;
-	font-size: 1.5rem;
-	font-weight: normal;
-	text-transform: capitalize;
 }
 
 div.section-content {
@@ -64,19 +59,7 @@ div.section-content {
 	overflow: hidden;
 	filter: grayscale( 100% );
 }
-.thumbnail::before {
-	content: "";
-	background-color: #000;
-	opacity: 0.2;
-	pointer-events: none;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-}
-.thumbnail .description {
+.thumbnail .overlay {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -86,13 +69,91 @@ div.section-content {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	z-index: 1;
+	background-color: hsla(0, 0%, 0%, 0.2);
 	padding: 1rem;
 	text-align: center;
 }
-.thumbnail .description h3 {
+.thumbnail .overlay h3 {
 	margin: 0;
 	color: #fff;
-	font-family: 'Saira Condensed', sans-serif;
 	font-size: 1.5rem;
+}
+
+@media screen and ( min-width: 500px ) {
+	header.section-header h2 {
+		font-size: 1.75rem;
+	}
+	.section-wrapper {
+		padding: 6.5% 0;
+	}
+	.panel-wrapper {
+		padding: 13% 0;
+	}
+	.thumbnails {
+		margin: 6.5% auto 0;
+	}
+}
+
+@media screen and ( min-width: 768px ) {
+	header.section-header h2 {
+		font-size: 2rem;
+	}
+	.thumbnails {
+		width: 95%;
+	}
+	.thumbnail-wrapper {
+		flex: 0 0 calc( 50% - 1rem )
+	}
+}
+
+@media screen and ( min-width: 1034px ) {
+	#sections{
+		padding-top: calc( ( 100% - 900px - 13% - 2rem ) / 2 )
+	}
+	.section-wrapper {
+		margin: 0 auto;
+	}
+} 
+
+@media screen and ( min-width: 1200px ) {
+	.section-wrapper {
+		margin: 0 6.5%;
+	}
+	.panel-wrapper {
+		padding: 13% 0;
+	}
+	.thumbnails {
+		margin: 6.5% auto 0;
+	}
+	.thumbnail-wrapper {
+		flex: 0 0 100%;
+	}
+}
+
+
+@media screen and ( min-width: 1536px ) {
+	.thumbnail-wrapper {
+		flex: 0 0 calc( 50% - 1rem )
+	}
+}
+
+@media screen and ( min-width: 2068px ) {
+	#section-container{
+		padding-top: calc( ( 100% - 900px - 13% - 2rem ) / 2 )
+	}
+	.section-wrapper {
+		margin: 0 auto;
+	}
+}
+
+/* fonts */
+
+header.section-header h2 {
+	color: hsl(0, 0%, 13%);
+	font-size: 1.5rem;
+	text-transform: capitalize;
+}
+
+.read-more {
+	font-weight: 300;
 }

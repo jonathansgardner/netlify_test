@@ -1,21 +1,24 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import './Testimonials.css';
+import './ContactForm.css';
 
-const Testimonials = () => {
+const ContactForm = () => {
 
-	const { markdownRemark: { frontmatter : { contactForm: data } } } = useStaticQuery(
+	const { file: { childMarkdownRemark : { frontmatter : { contactForm: data } } } } = useStaticQuery(
 		graphql`
 			query ContactFormQuery {
-				markdownRemark {
-					frontmatter {
-						contactForm {
-							heading
-							formFields {
-								label
-								title
-								type
+				file(sourceInstanceName: {eq: "settings"}, name: {eq: "panels"}) {
+					childMarkdownRemark {
+						frontmatter {
+							contactForm {
+								buttonText
+								formFields {
+									label
+									title
+									type
+								}
+								heading
 							}
 						}
 					}
@@ -25,26 +28,23 @@ const Testimonials = () => {
 	);
 
 	const mapFormFields = () => (
-		data.formFfields.map( field => {
+		data.formFields.map( field => {
 			switch( field.type ) {
-				case 'Text':
-					return <input type="text" name={ field.title.toLowerCase() } placeholder={ field.label } autocomplete="off" />;
-				case 'Email':
-					return <input type="email" name={ field.title.toLowerCase() } placeholder={ field.label } autocomplete="off" />;
-				case 'Phone':
-					return <input type="tel" name={ field.title.toLowerCase() } placeholder={ field.label } autocomplete="off" />;
-				case 'Website':
-					return <input type="url" name={ field.title.toLowerCase() } placeholder={ field.label } autocomplete="off" />;;
-				case 'Checkbox':
+				case 'text':
+				case 'email':
+				case 'tel':
+				case 'url':
+					return <input type={ field.type } name={ field.title.toLowerCase() } placeholder={ field.label } autocomplete="off" />;;
+				case 'checkbox':
 					return null;
-				case 'Dropdown':
+				case 'dropdown':
 					return (
 						<select>
 							<option value="" disabled selected hidden>{ field.label }</option>
-							{ field.options.map( opt => <option value={ option.option }>{ opt.label }</option> ) }
+							{ field.options.map( opt => <option value={ opt.option }>{ opt.label }</option> ) }
 						</select>
 					)
-				case 'Paragraph':
+				case 'paragraph':
 					return <textarea name={ field.title.toLowerCase() } placeholder={ field.label } rows="4"></textarea>
 				default:
 					return null;
@@ -59,12 +59,12 @@ const Testimonials = () => {
 					<h2>Get In Touch</h2>
 				</header>
 				<form>
-					
-					<input type="submit" />
+					{ mapFormFields() }
+					<input type="submit" value={ data.buttonText ? data.buttonText : 'Submit' } />
 				</form>
 			</div>
 		</section>
 	);
 };
 
-export default Testimonials;
+export default ContactForm;

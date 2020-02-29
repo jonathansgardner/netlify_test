@@ -21,11 +21,13 @@ const Testimonials = () => {
 						}
 					}
 				}
-				markdownRemark {
-					frontmatter {
-						testimonials {
-							heading
-							includeAudio
+				file(sourceInstanceName: {eq: "settings"}, name: {eq: "panels"}) {
+					childMarkdownRemark {
+						frontmatter {
+							testimonials {
+								heading
+								includeAudio
+							}
 						}
 					}
 				}
@@ -34,7 +36,7 @@ const Testimonials = () => {
 	);
 
 	const testimonials = data.allFile.edges;
-	const settings = data.markdownRemark.frontmatter;
+	const settings = data.file.childMarkdownRemark.frontmatter.testimonials;
 
 	const mapTestimonials = () => (
 		testimonials.map( ({ node: { childMarkdownRemark: { frontmatter: testimonial } } }) => (
@@ -60,7 +62,7 @@ const Testimonials = () => {
 						: null
 					}
 					<p className="quote"><span><i className="fas fa-quote-left">&ldquo;</i>&nbsp;&nbsp;{ testimonial.quote }</span></p>
-					<p className="name"><b>{ testimonial.author }</b> - <span className="from">{ testimonial.hometown }</span></p>
+					<p className="author"><span className="name">{ testimonial.author }</span> - <span className="from">{ testimonial.hometown }</span></p>
 				</div>
 			</div>
 		))

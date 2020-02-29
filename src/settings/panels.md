@@ -6,13 +6,13 @@ contactForm:
   formFields:
     - label: Name
       title: name
-      type: textInput
+      type: text
     - label: Email
       title: email
-      type: emailInput
+      type: email
     - label: Phone
       title: phone
-      type: phoneInput
+      type: tel
     - label: Message
       title: message
       type: paragraph

@@ -156,25 +156,25 @@ collections:
                 label: Form Fields
                 widget: list
                 types:
-                  - name: textInput
+                  - name: text
                     label: Text
                     widget: object
                     fields:
                       - { name: title, label: Title, widget: string }
                       - { name: label, label: Label, widget: string }
-                  - name: emailInput
+                  - name: email
                     label: Email
                     widget: object
                     fields:
                       - { name: title, label: Title, widget: string }
                       - { name: label, label: Label, widget: string }
-                  - name: phoneInput
+                  - name: tel
                     label: Phone
                     widget: object
                     fields:
                       - { name: title, label: Title, widget: string }
                       - { name: label, label: Label, widget: string }
-                  - name: websiteInput
+                  - name: url
                     label: Website
                     widget: object
                     fields:

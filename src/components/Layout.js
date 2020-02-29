@@ -20,9 +20,10 @@ const Layout = ({ children }) => {
 				file(sourceInstanceName: {eq: "settings"}, name: {eq: "identity"}) {
 					childMarkdownRemark {
 						frontmatter {
-							copyright
+							logo
 							siteTitle
 							slogan
+							copyright
 						}
 					}
 				}

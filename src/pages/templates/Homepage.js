@@ -6,6 +6,7 @@ import SEO from '../../components/seo';
 import PagePreview from '../../components/PagePreview';
 import PageThumbnails from '../../components/PageThumbnails';
 import Testimonials from '../../components/panels/Testimonials';
+import ContactForm from '../../components/panels/ContactForm';
 
 const Homepage = ({ pageContext }) => {
 
@@ -32,6 +33,10 @@ const Homepage = ({ pageContext }) => {
 			<div id="panels">
 				{ pageContext.showTestimonials 
 						? <Testimonials />
+						: null
+				}
+				{ pageContext.showContactForm 
+						? <ContactForm />
 						: null
 				}
 			</div>

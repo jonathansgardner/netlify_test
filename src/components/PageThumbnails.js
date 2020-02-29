@@ -11,7 +11,7 @@ const PageThumbnails = ({ section }) => {
 					className="thumbnail"
 					style={{ background: `url("${ thumbnail.image }") center / cover no-repeat` }}
 				>
-					<div className="description">
+					<div className="overlay">
 						<h3>{ thumbnail.heading }</h3>
 					</div>
 				</div>
