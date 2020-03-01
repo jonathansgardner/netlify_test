@@ -90,18 +90,26 @@ collections:
                     types:
                       - name: article
                         label: Article
-                        widget: relation
-                        collection: articles
-                        valueField: "title"
-                        searchFields: [ "title" ]
-                        displayFields: [ "title" ]
-                      - name: video
-                        label: Video
-                        widget: relation
-                        collection: videos
-                        valueField: "title"
-                        searchFields: [ "title" ]
-                        displayFields: [ "title" ]
+                        widget: object
+                        fields:
+                          - name: article
+                            label: Article
+                            widget: relation
+                            collection: articles
+                            valueField: "title"
+                            searchFields: [ "title" ]
+                            displayFields: [ "title" ]
+                      - name: article
+                        label: Article
+                        widget: object
+                        fields:
+                          - name: video
+                            label: Video
+                            widget: relation
+                            collection: videos
+                            valueField: "title"
+                            searchFields: [ "title" ]
+                            displayFields: [ "title" ]
                   - name: layout
                     label: Layout
                     widget: select

@@ -23,21 +23,30 @@ const Header = ({ logo, siteTitle, slogan, copyright }) => {
 	return (
 		<header
 			id="site-header"
-			style={{ background: `url(${ data.headerImage }) center/cover no-repeat` }}
+			style={{
+				background: data.headerImage ? `url(${ data.headerImage }) center/cover no-repeat` : 'hsl(0, 0%, 0%)'
+			}}
 		>
 			<header>
 				<nav></nav>
 			</header>
+			{console.log( logo )}
 			<div id="site-branding">
-				<h1 id="site-title">
-					<Link to="/">
-						{ siteTitle }
-					</Link>
-				</h1>
-				<h4 id="slogan">{ slogan }</h4>
+				{ logo ? <img id="logo" src={ logo } /> : null }
+
+				{ siteTitle
+					? <h1 id="site-title">
+							<Link to="/">
+								{ siteTitle }
+							</Link>
+						</h1>
+					: null
+				}
+
+				{ slogan ? <h4 id="slogan">{ slogan }</h4> : null }
 			</div>
 			<footer>
-				<small>{ copyright }</small>
+				<small>{ copyright ? copyright : `Copyright © ${ new Date().getFullYear() } ${ siteTitle ? siteTitle : null }` }</small>
 			</footer>
 		</header>
 	);

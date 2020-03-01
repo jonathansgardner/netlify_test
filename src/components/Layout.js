@@ -34,6 +34,7 @@ const Layout = ({ children }) => {
   return (
     <div id="site-wrapper">
       <Header
+				logo={ data.logo }
 				siteTitle={ data.siteTitle }
 				slogan={ data.slogan }
 				copyright={ data.copyright }

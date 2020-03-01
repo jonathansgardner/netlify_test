@@ -20,7 +20,7 @@ const PageThumbnails = ({ section }) => {
 	}
 
 	return (
-		<section id={ section.heading.replace(/[^a-z0-9]/gi, '-').toLowerCase() }>
+		<section className="page-thumbnails">
 			<div className="section-wrapper">
 				<header className="section-header">
 					<h2>{ section.heading }</h2>
@@ -41,7 +41,11 @@ PageThumbnails.propTypes = {
 };
 
 PageThumbnails.defaultProps = {
-	section: null
+	section: {
+		heading: '',
+		content: '',
+		thumbnails: []
+	}
 };
 
 export default PageThumbnails;

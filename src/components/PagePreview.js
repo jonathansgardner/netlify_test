@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PagePreview = ({ section }) => {
 	return (
-		<section id={ section.page }>
+		<section className="page-preview">
 			<div className="section-wrapper">
 				<header className="section-header">
 					<h2>{ section.heading }</h2>
@@ -27,7 +27,12 @@ PagePreview.propTypes = {
 };
 
 PagePreview.defaultProps = {
-	section: null
+	section: {
+		page: '',
+		heading: '',
+		content: '',
+		linkText: ''
+	}
 };
 
 export default PagePreview;
