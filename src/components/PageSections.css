@@ -149,7 +149,6 @@ div.section-content {
 /* fonts */
 
 header.section-header h2 {
-	color: hsl(0, 0%, 13%);
 	font-size: 1.5rem;
 	text-transform: capitalize;
 }
@@ -157,3 +156,10 @@ header.section-header h2 {
 .read-more {
 	font-weight: 300;
 }
+
+@media screen and ( min-width: 500px ) {
+	header.section-header h2 {
+		font-size: 1.75rem;
+	}
+}
+

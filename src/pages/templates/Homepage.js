@@ -45,11 +45,11 @@ const Homepage = ({ pageContext }) => {
 };
 
 Homepage.propTypes = {
-	pageContext: PropTypes.object
+	pageContext: PropTypes.array
 };
 
 Homepage.defaultProps = {
-	pageContext: null
+	pageContext: []
 };
 
 export default Homepage;
