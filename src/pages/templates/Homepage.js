@@ -26,10 +26,12 @@ const Homepage = ({ pageContext }) => {
 	return (
 		<Layout>
 			<SEO title="Home" />
-			{ console.log( pageContext )}
-			<div id="sections">
-				{ mapSections() }
-			</div>
+			{ pageContext.sections
+					? <div id="sections">
+							{ mapSections() }
+						</div>
+					: null
+			}
 			<div id="panels">
 				{ pageContext.showTestimonials 
 						? <Testimonials />
@@ -45,11 +47,15 @@ const Homepage = ({ pageContext }) => {
 };
 
 Homepage.propTypes = {
-	pageContext: PropTypes.array
+	pageContext: PropTypes.object
 };
 
 Homepage.defaultProps = {
-	pageContext: []
+	pageContext: {
+		sections: [],
+		showTestimonials: false,
+		showContactForm: false
+	}
 };
 
 export default Homepage;
