@@ -24,7 +24,7 @@ const Header = ({ logo, siteTitle, slogan, copyright }) => {
 		<header
 			id="site-header"
 			style={{
-				background: data.headerImage ? `url(${ data.headerImage }) center/cover no-repeat` : 'hsl(0, 0%, 0%)'
+				background: data.headerImage ? `url(${ data.headerImage })  hsl(0, 0%, 0%) center/cover no-repeat` : 'hsl(0, 0%, 0%)'
 			}}
 		>
 			<header>
@@ -34,14 +34,14 @@ const Header = ({ logo, siteTitle, slogan, copyright }) => {
 			<div id="site-branding">
 				{ logo ? <img id="logo" src={ logo } /> : null }
 
-				{ siteTitle
+				{/* { siteTitle
 					? <h1 id="site-title">
 							<Link to="/">
 								{ siteTitle }
 							</Link>
 						</h1>
 					: null
-				}
+				} */}
 
 				{ slogan ? <h4 id="slogan">{ slogan }</h4> : null }
 			</div>

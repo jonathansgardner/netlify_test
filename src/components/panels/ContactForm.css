@@ -97,7 +97,7 @@ form input[type="submit"] {
 	box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2);
 	color: inherit;
 	font-family: 'Saira', sans-serif;
-	font-weight: 500;
+	font-size: 0.8rem;
 	text-transform: uppercase;
 	cursor: pointer;
 }

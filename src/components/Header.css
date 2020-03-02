@@ -1,9 +1,10 @@
 header#site-header {
 	position: relative;
 	flex: 1 0 100vh;
-	max-height: 860px;
 	display: flex;
 	flex-direction: column;
+	min-height: 66.6667vw;
+	max-height: 200vw;
 	z-index: 0;
 	color: #fff;
 }
@@ -30,16 +31,14 @@ header#site-header a {
 	text-decoration: none;
 }
 img#logo {
-	width: 75%;
-	min-width: 288px;
-	margin-bottom: 0.5rem;
+	width: 90%;
+	max-width: 420px;
 }
 h1#site-title {
 	margin: 0;
 }
 h4#slogan {
 	margin: 0;
-	text-align: center;
 }
 header#site-header footer {
 	display: none;
@@ -49,9 +48,21 @@ header#site-header footer {
 	padding: 1rem;
 }
 
-@media screen and ( min-width: 1200px ) {
+@media screen and (min-width: 500px) {
+	header#site-header {
+		max-height: 150vw;
+	}
+	img#logo {
+		width: 60%;
+		max-width: 600px;
+		min-width: 420px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
 	header#site-header {
 		flex-basis: 50%;
+		min-height: auto;
 		max-height: none;
 	}
 	header#site-header footer {
@@ -69,7 +80,7 @@ html, body {
 	font-weight: 400;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	font-family: 'Saira Condensed', sans-serif;
 	font-weight: 500;
 }
@@ -80,12 +91,41 @@ h1#site-title {
 }
 
 h4#slogan {
+	width: 90%;
 	font-size: 1.25rem;
 	font-weight: 400;
+	margin: 0 auto;
 }
 
 @media screen and ( min-width: 500px ) {
 	h1#site-title {
 		font-size: 4.5rem;
 	}
+	h4#slogan {
+		font-size: 1.5rem;
+	}
 }
+
+/* @media screen and ( min-width: 800px ) {
+	h4#slogan {
+		font-size: 2.5vw;
+	}
+} */
+
+@media screen and (min-width: 1200px) {
+	h4#slogan {
+		font-size: 1.5rem;
+	}
+}
+
+/* @media screen and ( min-width: 1600px ) {
+	h4#slogan {
+		font-size: 1.25vw;
+	}
+}
+
+@media screen and (min-width: 2000px) {
+	h4#slogan {
+		font-size: 25px;
+	}
+} */

@@ -21,7 +21,7 @@ html, body {
 	width: 100%;
 	max-width: 1251px;
 	z-index: 1;
-	box-shadow: -2px 0 10px hsla(0, 0%, 0%, 0.5);
+	box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
 }
 
 @media screen and ( min-width: 1200px ) {
