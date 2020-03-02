@@ -15,6 +15,12 @@ sections:
       - image: /assets/mobility.jpeg
         pageLink: Mobility/Recovery
     type: pageThumbnails
+  - content:
+      - type: video
+        video: Gua Sha
+    heading: Featured Video
+    linkText: view all videos
+    type: featuredContent
 showTestimonials: true
 showContactForm: true
 ---
